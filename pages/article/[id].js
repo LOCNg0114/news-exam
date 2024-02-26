@@ -18,7 +18,7 @@ import axios from 'axios';
 
 export default function ArticleDetail({ article }) {
     if (!article) {
-        return <div>Loading...</div>;
+        return <div>Loading</div>;
     }
 
     return (
@@ -40,19 +40,19 @@ export default function ArticleDetail({ article }) {
 }
 
 export async function getServerSideProps() {
-    const apiKey = '1dc16ec5b23648aa968caf240b21f3b7';; // Replace with your NewsAPI key
+    const apiKey = '1dc16ec5b23648aa968caf240b21f3b7';
     const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
 
     try {
         const response = await axios.get(apiUrl);
         const articles = response.data.articles;
 
-        // Select the first article as the sample article
+        // show sample article
         const sampleArticle = articles[0];
 
         return { props: { article: sampleArticle } };
     } catch (error) {
-        console.error('Error fetching article:', error);
+        console.error('Error fetching sample article:', error);
         return { props: { article: null } };
     }
 }
