@@ -27,10 +27,8 @@ function News({ articles }) {
                 ))}
             </div>
         </div>
-
     );
 }
-
 
 export async function getServerSideProps() {
     const apiKey = '1dc16ec5b23648aa968caf240b21f3b7';
@@ -44,10 +42,9 @@ export async function getServerSideProps() {
         }));
         return { props: { articles } };
     } catch (error) {
-        console.error('Error fetching news:', error);
+        console.error('Error when fetching', error);
         return { props: { articles: [] } };
     }
-
 }
 
 export default News;
